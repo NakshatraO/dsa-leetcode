@@ -1,0 +1,14 @@
+/*
+Problem: 509. Fibonacci Number
+
+Time Complexity: O(2ⁿ)
+Space Complexity: O(n)
+*/
+
+class Solution {
+    public int fib(int n) {
+        if(n < 0 || n > 30) return 0;
+        if(n == 1 || n == 0) return n;
+        return fib(n-1) + fib(n-2);
+    }
+}
