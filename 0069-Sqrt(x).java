@@ -1,28 +1,29 @@
 /*
 Problem: 69. Sqrt(x)
 
-Time Complexity: O(√n)
+Time Complexity: O(log n)
 Space Complexity: O(1)
 */
 
 class Solution {
     public int mySqrt(int x) {
-        if(x <= 0)  return 0;
+        if (x == 0 || x == 1)
+            return x;
 
-        if(x == 1 || x == 2 || x == 3)  return 1;
-        
-        long n = 0, i;
-        for(i=2 ; i<x ; i++){
-            if(i*i == x){
-                n = i;
-                break;
-            }
+        long low = 1;
+        long high = x;
+        long num = low;
 
-            else if(i*i > x){
-                n = i-1;
-                break;
+        while (low <= high) {
+            long mid = (low + high) / 2;
+
+            if (mid * mid <= x) {
+                num = mid;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
             }
         }
-        return (int)n;
+        return (int)num;
     }
 }
